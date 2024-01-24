@@ -84,7 +84,6 @@ void loop()
 (imagen conexiones sensores, tarjeta y lCD)
 
 4° Inicia el simulador y observa los valores reflejados dentro de la pantalla LCD 
-(imagen de resultados de temperatura,humedad,distancia y nombre y carrera
-
+https://github.com/AmaiCisneros/Practica-5/blob/main/Captura%20de%20pantalla%202024-01-24%20104526.png).
 
 
