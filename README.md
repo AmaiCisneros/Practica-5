@@ -17,27 +17,24 @@ LCD 16x2 (I2C)
 #define LCD_COLUMNS 20
 #define LCD_LINES   4
 
-DHTesp dhtSensor;
-
-const int Trigger = 4;   //Pin digital 2 para el Trigger del sensor
-const int Echo = 2;   //Pin digital 3 para el Echo del sensor
 const int DHT_PIN = 15;
 
-
+DHTesp dhtSensor;
 
 LiquidCrystal_I2C lcd(I2C_ADDR, LCD_COLUMNS, LCD_LINES);
+const int Trigger =4; //Pin digital 4 para Triager del sensor
+const int Echo=2;   //Pin digital 2 para el Echo del sensor
 
-void setup() {
-  Serial.begin(9600);//iniciailzamos la comunicación
-  pinMode(Trigger, OUTPUT); //pin como salida
-  pinMode(Echo, INPUT);  //pin como entrada
-  digitalWrite(Trigger, LOW);//Inicializamos el pin con 0
+void setup()
+ {
    Serial.begin(115200);
   dhtSensor.setup(DHT_PIN, DHTesp::DHT22);
   lcd.init();
   lcd.backlight();
+  pinMode(Trigger, OUTPUT); //pin como salida
+  pinMode(Echo, INPUT);  //pin como entrada
+  digitalWrite(Trigger, LOW);//Inicializamos el pin con 0
 }
-
 void loop()
 {
 
@@ -45,40 +42,35 @@ void loop()
   Serial.println("Temp: " + String(data.temperature, 1) + "°C");
   Serial.println("Humidity: " + String(data.humidity, 1) + "%");
   Serial.println("---"); 
+  long t; //timepo que demora en llegar el eco
+  long d; //distancia en centimetros
+
+  digitalWrite(Trigger, HIGH);
+  delayMicroseconds(2000);          //Enviamos un pulso de 10us
+  digitalWrite(Trigger, LOW);
+  
+  t = pulseIn(Echo, HIGH); //obtenemos el ancho del pulso
+  d = t/59;
 
   lcd.setCursor(0, 0);
   lcd.print("  Temp: " + String(data.temperature, 1) + "\xDF"+"C  ");
   lcd.setCursor(0, 1);
   lcd.print(" Humidity: " + String(data.humidity, 1) + "% ");
   lcd.print("Wokwi Online IoT");
-
-  delay(2000);
   lcd.clear();
-
-  long t; //timepo que demora en llegar el eco
-  long d; //distancia en centimetros
-
-  digitalWrite(Trigger, HIGH);
-  delayMicroseconds(10);          //Enviamos un pulso de 10us
-  digitalWrite(Trigger, LOW);
-  
-  t = pulseIn(Echo, HIGH); //obtenemos el ancho del pulso
-  d = t/59;             //escalamos el tiempo a una distancia en cm
-
-  lcd.setCursor(0, 0);
-  lcd.print("Distancia: " +String(d) + "cm  ");
-  lcd.print("Wokwi Online IoT");
   delay(2000);
-  lcd.clear();
 
-  
-  
+
+  lcd.setCursor(0,0);
+  lcd.print("Dis: " + String(d) + "cm  ");
+  lcd.clear();
+  delay(2000);
 
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print("Ing Cisneros");
+  lcd.print("Ing.Cisneros");
   lcd.setCursor(0, 1);
-  lcd.print("INDUSTRIAL");
+  lcd.print("Industrial");
   delay(2000);
   lcd.clear();
 
