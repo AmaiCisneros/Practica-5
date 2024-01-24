@@ -80,10 +80,10 @@ void loop()
 ![](https://github.com/AmaiCisneros/Practica-5/blob/main/1.png)
 
 3°-Hacer la conexion correspondientes de los sensores Ultrasonico y DHT11 hacia la tarjeta ESP32 y  tambien conectar la LCD ;
+![]()
 
-(imagen conexiones sensores, tarjeta y lCD)
 
 4° Inicia el simulador y observa los valores reflejados dentro de la pantalla LCD 
-https://github.com/AmaiCisneros/Practica-5/blob/main/Captura%20de%20pantalla%202024-01-24%20104526.png).
+![](https://github.com/AmaiCisneros/Practica-5/blob/main/Captura%20de%20pantalla%202024-01-24%20104526.png)
 
 
