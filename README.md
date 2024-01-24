@@ -77,7 +77,7 @@ void loop()
 }
 
 2°-Instalar la libreria DHT sensor library for ESPx y LiquidCrystal I2C ;
-(imagen librerias)
+([](https://github.com/AmaiCisneros/Practica-5/blob/main/1.png))
 
 3°-Hacer la conexion correspondientes de los sensores Ultrasonico y DHT11 hacia la tarjeta ESP32 y  tambien conectar la LCD ;
 
